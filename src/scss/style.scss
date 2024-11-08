@@ -1,0 +1,16 @@
+@forward "assets/compile";
+
+body {
+   font-family: "Poppins";
+   background-color: #f9f9f9;
+}
+
+.wrapper {
+   display: flex;
+   flex-direction: column;
+   min-height: 100vh;
+}
+
+.main {
+   flex: 1 1 auto;
+}
