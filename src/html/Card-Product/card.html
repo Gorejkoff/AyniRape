@@ -1,0 +1,37 @@
+<div class="card-product @@if(context.swiper){swiper-slide}">
+   <div class="card-product__image">
+
+      @@if(favourites == true){ @@include('../icons/faviurites.html', {class: "card-product__favourites active"}) }
+      @@if(favourites !== true){ @@include('../icons/faviurites.html', {class: "card-product__favourites"}) }
+
+      @@if(status !== false){ <div class="card-product__status">@@status</div>}
+
+      <div class="card-product__image-body">
+         <img src="@img/png/@@image" alt="фото товара">
+      </div>
+
+   </div>
+
+   <div class="card-product__data">
+      <a href="product-card.html" class="card-product__name">@@name</a>
+
+      @@if(availability == true){<div class="card-product__availability in">In stock</div>}
+      @@if(availability == false){<div class="card-product__availability">Not available</div>}
+
+      <div class="card-product__weight">s
+         <span>Weight</span>
+         <span>@@weight</span>
+      </div>
+      <div class="card-product__price">
+         <div class="card-product__price-item">
+            @@if(sale !== false){<span class="card-product__price-sale">@@sale</span>}
+            <span class="card-product__price-value">@@price</span>
+         </div>
+
+         @@if(basket == true){@@include('../icons/basket.html', {class: "card-product__button-basket active"})}
+         @@if(basket == false){@@include('../icons/basket.html', {class: "card-product__button-basket"})}
+
+      </div>
+   </div>
+
+</div>

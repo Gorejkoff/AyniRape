@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 
 <head>
    @@include('html/1_head.html',{"title":"AyniRape"})
@@ -8,30 +8,35 @@
 
 <body>
 
-
    <div class="wrapper">
 
+      @@include('html/main-screen.html',{})
 
-      @@include('html/2_header.html',{})
+      <div class="main">
 
+         @@include('html/Presents/presents.html',{})
 
+         @@include('html/Bestsellers/bestsellers.html',{})
 
-      <main class="main">
+         @@include('html/About-Products/about-products.html',{})
 
-         @@include('html/bread_crumbs/bread_crumbs.html',{"list": [ {"name": "Главная", "link": "index.html"}, {"name": "История", "link": "history.html"}]})
+         @@include('html/Feedback/feedback.html',{})
 
+         @@include('html/Company/company.html',{})
 
-
-      </main>
-
+      </div>
 
       @@include('html/4_footer.html',{})
 
-
    </div>
 
+   @@include('html/Basket/Basket.html',{})
 
-   @@include('html/3_scripts.html',{})
+   @@include('html/Bottom-Menu/Bottom-menu.html',{})
+
+   @@include('html/Menu-mobile.html/menu-mobile.html',{})
+
+   @@include('html/3_scripts.html',{swiper: true,})
 
 
 </body>

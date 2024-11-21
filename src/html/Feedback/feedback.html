@@ -1,0 +1,31 @@
+<section class="feedback margin-section">
+   <div class="feedback__container">
+      <div class="feedback__body">
+
+         <div class="feedback__title">
+            <div class="title-header">They talk about us</div>
+            <div class="title-section">Feedback from our clients</div>
+            <div class="feedback__title-button">
+               <button class="general-button" type="button">Leave feedback</button>
+            </div>
+         </div>
+
+         <div class="feedback__block-swiper">
+
+            <div class="feedback__swiper swiper">
+               <div class="feedback__swiper-wrapper swiper-wrapper">
+
+                  @@loop('./feedback-slide.html',[{id:1},{id:2},{id:3},{id:4},{id:5}])
+
+               </div>
+            </div>
+
+            <div class="feedback__buttons">
+               @@include('../Button-swiper/Button-swiper.html',{prev: "feedback-prev", next: "feedback-next"})
+            </div>
+
+         </div>
+
+      </div>
+   </div>
+</section>

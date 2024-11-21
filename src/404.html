@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+   @@include('html/1_head.html',{"title":"404"})
+</head>
+
+
+<body>
+
+   <div class="wrapper">
+
+      @@include('html/2_header-top.html',{})
+      @@include('html/2_header.html',{})
+
+      <div class="main">
+
+         @@include('html/Bread_Crumbs/Bread_Crumbs.html',{"list": [ {"name": "Main", "link": "index.html"}, {"name": "404", "link": "404.html"}]})
+
+         <div class="errors margin-section">
+            <div class="errors__container">
+               <div class="errors__body">
+                  <div class="errors__image-404">
+                     <img src="@img/png/404.png" alt="ошибка 404">
+                  </div>
+                  <div class="errors__text">The page was not found or is currently unavailable.</div>
+                  <div class="errors__link">
+                     <a class="general-button" href="index.html">Return to home page</a>
+                  </div>
+
+               </div>
+            </div>
+         </div>
+
+      </div>
+
+      @@include('html/4_footer.html',{})
+
+   </div>
+
+   @@include('html/Bottom-menu/Bottom-menu.html',{})
+
+   @@include('html/Menu-mobile.html/menu-mobile.html',{})
+
+   @@include('html/3_scripts.html',{swiper: true,})
+
+
+</body>
+
+</html>

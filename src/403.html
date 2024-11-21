@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+   @@include('html/1_head.html',{"title":"403"})
+</head>
+
+
+<body>
+
+   <div class="wrapper">
+
+      @@include('html/2_header-top.html',{})
+      @@include('html/2_header.html',{})
+
+      <div class="main">
+
+         <div class="errors margin-section">
+            <div class="errors__container">
+               <div class="errors__body">
+                  <div class="errors__image-403">
+                     <img src="@img/png/403.png" alt="ошибка 403">
+                  </div>
+                  <div class="errors__text">The page was not found or is currently unavailable.</div>
+                  <div class="errors__link">
+                     <a class="general-button" href="index.html">Return to home page</a>
+                  </div>
+
+               </div>
+            </div>
+         </div>
+
+      </div>
+
+      @@include('html/4_footer.html',{})
+
+   </div>
+
+   @@include('html/Bottom-menu/Bottom-menu.html',{})
+
+   @@include('html/Menu-mobile.html/menu-mobile.html',{})
+
+   @@include('html/3_scripts.html',{swiper: true,})
+
+
+</body>
+
+</html>

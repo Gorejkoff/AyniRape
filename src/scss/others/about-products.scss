@@ -1,0 +1,126 @@
+@use 'assets/variablesSCSS.scss' as *;
+
+.about-products {
+
+   &__container {}
+
+   &__title {
+      margin-bottom: 20px;
+   }
+
+   &__tabs {}
+
+   &__tabs-block {
+      &:not(:last-child) {
+         margin-bottom: 10px;
+      }
+   }
+
+   &__tabs-button {
+      padding: 10px 26px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--color-black);
+      background-color: var(--color-blue-crayola);
+      transition: color $tr-time, background-color $tr-time;
+
+      .js-tabs-open & {
+         color: var(--color-white);
+         background-color: var(--color-yellow-broom);
+      }
+   }
+
+   &__tabs-name {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 200%;
+
+      @media (min-width:768px) {
+         line-height: 154%;
+         font-size: 20px;
+      }
+
+      @media (min-width:1024px) {
+         font-size: 26px;
+      }
+
+   }
+
+   &__tabs-arrow {
+      display: flex;
+      align-items: center;
+
+      svg {
+         width: 30px;
+         height: 30px;
+         transition: transform $tr-time;
+
+         @media (min-width:768px) {
+            width: 45px;
+            height: 45px;
+         }
+
+         @media (min-width:1024px) {
+            width: 60px;
+            height: 60px;
+         }
+      }
+
+      .js-tabs-open & {
+         svg {
+            transform: rotate(180deg);
+         }
+      }
+   }
+
+   &__tabs-wrapper {}
+
+   &__tabs-inner {}
+
+   &__tabs-content {
+      padding: 20px 10px;
+      background-color: var(--color-black);
+
+      @media (min-width:1024px) {
+         padding: 20px 40px;
+         display: flex;
+      }
+   }
+
+   &__tabs-text {
+      margin-bottom: 10px;
+      flex: 1 1 auto;
+      font-size: 12px;
+      line-height: 150%;
+      color: var(--color-white);
+
+      @media (min-width:768px) {
+         font-size: 16px;
+      }
+
+      @media (min-width:1024px) {
+         margin-bottom: 0;
+      }
+
+      p:not(:last-child) {
+         margin-bottom: 10px;
+      }
+   }
+
+   &__tabs-image {
+      flex: 0 0 30%;
+
+      img {
+         width: 100%;
+      }
+   }
+
+
+
+
+
+
+
+}

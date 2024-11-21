@@ -1,0 +1,36 @@
+.button-menu {
+   position: relative;
+   width: 30px;
+   height: 30px;
+
+   .is-open-menu & {
+      display: none;
+   }
+
+   @media (min-width:1024px) {
+      display: none;
+   }
+}
+
+.line {
+   position: absolute;
+   left: 0;
+   height: 4px;
+   background-color: var(--color-yellow-broom);
+}
+
+.line-top {
+   top: 4px;
+   width: 100%;
+}
+
+.line-center {
+   top: 50%;
+   transform: translateY(-50%);
+   width: 23px;
+}
+
+.line-bottom {
+   bottom: 4px;
+   width: 14px;
+}

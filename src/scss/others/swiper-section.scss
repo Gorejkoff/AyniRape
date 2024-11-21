@@ -1,0 +1,25 @@
+.swiper-section {
+
+   &__container {}
+
+   &__title {
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+
+      @media (min-width:1024px) {
+         margin-bottom: 40px;
+      }
+   }
+
+   &__swiper {
+      margin-bottom: 20px;
+      overflow: hidden;
+   }
+
+   &__buttons {
+      display: flex;
+      justify-content: center;
+   }
+}

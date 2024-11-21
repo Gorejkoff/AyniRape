@@ -1,0 +1,27 @@
+<div class="about-products__tabs-block js-tabs-body js-tabs-closing js-tabs-hover js-tabs-toggle">
+   <button type="button" class="about-products__tabs-button ">
+      <span class="about-products__tabs-name">@@title</span>
+      <span class="about-products__tabs-arrow">
+         <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="30" cy="30" r="30" fill="white" />
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M39.9564 23.6404C40.2017 23.7063 40.4108 23.8668 40.5378 24.0868C40.6648 24.3067 40.6993 24.5681 40.6337 24.8135L37.374 37.0242C37.3432 37.1477 37.2882 37.2639 37.2121 37.3659C37.136 37.4679 37.0404 37.5537 36.9307 37.6183C36.8211 37.6829 36.6997 37.7251 36.5736 37.7423C36.4475 37.7595 36.3193 37.7515 36.1963 37.7186C36.0734 37.6857 35.9582 37.6287 35.8576 37.5508C35.7569 37.473 35.6728 37.3758 35.6101 37.2651C35.5473 37.1544 35.5073 37.0323 35.4923 36.9059C35.4772 36.7795 35.4875 36.6514 35.5225 36.5291L38.1853 26.5531L20.2756 36.9095C20.0556 37.0369 19.7941 37.0717 19.5485 37.0062C19.3029 36.9408 19.0933 36.7804 18.9659 36.5605C18.8385 36.3405 18.8038 36.079 18.8692 35.8334C18.9347 35.5878 19.095 35.3782 19.315 35.2508L37.2298 24.893L27.2537 22.2096C27.1303 22.1787 27.0142 22.1236 26.9122 22.0474C26.8103 21.9712 26.7246 21.8755 26.6601 21.7658C26.5955 21.6561 26.5535 21.5347 26.5364 21.4086C26.5193 21.2825 26.5275 21.1542 26.5605 21.0313C26.5935 20.9084 26.6506 20.7933 26.7286 20.6927C26.8065 20.5921 26.9037 20.5081 27.0145 20.4455C27.1253 20.3828 27.2474 20.3429 27.3738 20.328C27.5002 20.3131 27.6283 20.3235 27.7506 20.3586L39.9564 23.6404Z" fill="#222222" />
+         </svg>
+      </span>
+   </button>
+   <div class="about-products__tabs-wrapper js-tabs-shell">
+      <div class="about-products__tabs-inner js-tabs-inner">
+         <div class="about-products__tabs-content">
+            <div class="about-products__tabs-text">
+
+               @@for( var i = 0; i < 1; i++ ){ <p><b>@@title </b>`+text[i]+`</p> }
+
+                  @@for( var i = 1; i < text.length; i++ ){ <p>`+text[i]+`</p> }
+
+            </div>
+            <div class="about-products__tabs-image">
+               <img src="@img/jpg/@@image" alt="демонстрационное фото">
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

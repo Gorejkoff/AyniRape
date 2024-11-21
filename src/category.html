@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+   @@include('html/1_head.html',{"title":"Category"})
+</head>
+
+
+<body>
+
+   <div class="wrapper">
+
+      @@include('html/2_header-top.html',{})
+      @@include('html/2_header.html',{})
+
+      <div class="main">
+
+         @@include('html/Bread_Crumbs/Bread_Crumbs.html',{"list": [ {"name": "Main", "link": "index.html"}, {"name": "Other products", "link": "other-products.html"}, {"name": "Agua de Florida", "link": "category.html"}]})
+
+         <section class="category margin-section">
+            <div class="category__container">
+               <div class="category__body">
+                  <div class="category__title">
+                     <h1 class="title-section">Agua de Florida</h1>
+                     <span class="category__quantity">32 items</span>
+                  </div>
+                  <div class="category__grid">
+                     @@loop('html/Card-Product/card.html','json/category.json')
+                  </div>
+               </div>
+               <div class="category__pagination">
+                  @@include('html/Pagination/Pagination.html',{})
+               </div>
+            </div>
+         </section>
+
+      </div>
+
+      @@include('html/4_footer.html',{})
+
+   </div>
+
+   @@include('html/Bottom-menu/Bottom-menu.html',{})
+
+   @@include('html/Menu-mobile.html/menu-mobile.html',{})
+
+   @@include('html/3_scripts.html',{swiper: true,})
+
+
+</body>
+
+</html>

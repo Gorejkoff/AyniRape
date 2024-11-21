@@ -1,0 +1,207 @@
+@use '../assets/variablesSCSS.scss' as *;
+
+.feedback {
+   overflow: hidden;
+
+   &__container {}
+
+   &__body {
+      @media (min-width:992px) {
+         display: flex;
+      }
+   }
+
+   &__title {
+      padding-bottom: 30px;
+      flex: 0 0 34%;
+      background-image: url('../../img/svg/quotation_marks.svg');
+      background-repeat: no-repeat;
+      background-position: 100% 100%;
+      background-size: 142px;
+      margin-bottom: 20px;
+
+      @media (min-width:992px) {
+         background-position: 55% 90%;
+         background-size: 155px;
+         padding-bottom: 0;
+         margin-bottom: 0;
+      }
+
+      .title-header {
+         margin-bottom: 20px;
+      }
+
+      .title-section {
+         margin-bottom: 40px;
+      }
+   }
+
+   &__title-button {
+      button {
+         @media (max-width:767.98px) {
+            width: 100%;
+         }
+      }
+   }
+
+   &__block-swiper {
+      position: relative;
+      padding-bottom: 30px;
+      width: 100%;
+
+      @media (min-width:992px) {
+         width: calc((100vw - var(--padding-container) * 2) - 34%);
+      }
+
+      @media (min-width:$max-container) {
+         width: 906px;
+      }
+
+   }
+
+   &__swiper {
+      margin-left: 0;
+
+      @media (min-width:768px) {
+         margin-left: 10%;
+      }
+   }
+
+   &__swiper-wrapper {
+
+      position: relative;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      display: flex;
+      transition-property: transform;
+      transition-timing-function: var(--swiper-wrapper-transition-timing-function, initial);
+      box-sizing: content-box;
+      transform: translate3d(0px, 0, 0);
+      transform-style: preserve-3d;
+      perspective: 1000px;
+   }
+
+   &__swiper-slide {
+      will-change: transform, opacity;
+      --size: 90px;
+      position: relative;
+      padding-top: calc(var(--size) / 2);
+      opacity: 0 !important;
+      transition: all $tr-time-l;
+
+      @media (min-width:768px) {
+         transform-style: preserve-3d;
+      }
+
+      &.swiper-slide-prev,
+      &.swiper-slide-next {
+         opacity: 0.5 !important;
+         transition: all $tr-time-l;
+
+         .feedback__swiper-slide-content {
+            @media (min-width:768px) {
+               border-color: var(--color-yellow-broom);
+            }
+         }
+      }
+
+      &.swiper-slide-active {
+         opacity: 1 !important;
+         transition: all $tr-time-l;
+      }
+
+   }
+
+   &__swiper-slide-content {
+      padding: 20px 30px;
+      box-shadow: 0 2px 10px 0 var(--color-blue-crayola-02);
+      background-color: var(--color-white);
+      border: 1px solid transparent;
+
+      @media (min-width:768px) {
+         padding: 30px 30px 40px;
+      }
+   }
+
+   &__swiper-slide-image {
+      position: absolute;
+      top: 0;
+      right: 22px;
+      width: var(--size);
+      height: var(--size);
+      border: 10px solid var(--color-smoky-white);
+      border-radius: 50%;
+      background: var(--color-white);
+
+      img {
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+      }
+   }
+
+   &__swiper-slide-title {
+      margin-bottom: 11px;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 229%;
+
+      -webkit-font-smoothing: subpixel-antialiased;
+      transform: translateZ(0);
+      backface-visibility: hidden;
+
+   }
+
+   &__swiper-slide-date {
+      margin-bottom: 11px;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 133%;
+      color: var(--color-blue-crayola);
+
+      -webkit-font-smoothing: subpixel-antialiased;
+      transform: translateZ(0);
+      backface-visibility: hidden;
+   }
+
+   &__swiper-slide-stars {
+      margin-bottom: 20px;
+      font-size: 0;
+
+      img {
+         width: 15px;
+         margin-right: 11px;
+      }
+   }
+
+   &__swiper-slide-text {
+      font-weight: 400;
+      font-size: 12px;
+
+      -webkit-font-smoothing: subpixel-antialiased;
+      transform: translateZ(0) !important;
+      backface-visibility: hidden;
+
+      @media (min-width:768px) {
+         font-size: 14px;
+      }
+   }
+
+   &__buttons {
+      display: flex;
+      justify-content: center;
+
+      @media (min-width:768px) {
+         display: block;
+         position: absolute;
+         bottom: 0;
+         left: 6%;
+         z-index: 10;
+      }
+   }
+
+}

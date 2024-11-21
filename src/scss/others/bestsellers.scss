@@ -1,0 +1,81 @@
+@use '../assets/variablesSCSS.scss' as *;
+
+.bestsellers {
+
+   &__container {}
+
+   &__header {
+      margin-bottom: 40px;
+      display: flex;
+      justify-content: space-between;
+   }
+
+   &__body {
+      @media (min-width:768px) {
+         display: flex;
+      }
+   }
+
+   &__nav {
+      flex: 0 0 25%;
+      padding-right: 20px;
+
+      ul {
+         @media (min-width:768px) {
+            max-width: 212px;
+         }
+      }
+
+      li:first-child {
+         button {
+            padding-top: 0;
+         }
+      }
+
+      button {
+         padding: 20px 0;
+         width: 100%;
+         font-weight: 500;
+         font-size: 20px;
+         text-align: start;
+         line-height: 100%;
+         border-bottom: 1px solid var(--color-smoky-white);
+         transition: all 0.3s;
+
+         &:hover,
+         &.active {
+            border-color: var(--color-blue-crayola);
+            color: var(--color-yellow-broom);
+         }
+      }
+   }
+
+   &__content {
+      flex: 1 1 auto;
+   }
+
+   &__swiper {
+      overflow: hidden;
+      width: 100%;
+      display: none;
+
+      &.active {
+         display: block;
+      }
+
+      @media (min-width:768px) {
+         width: calc((100vw - var(--padding-container) * 2) * 0.75);
+      }
+
+      @media (min-width: $max-container) {
+         width: calc(var(--container-width) * 0.75);
+      }
+   }
+
+
+   &__buttons-swiper {
+
+      display: flex;
+      justify-content: center;
+   }
+}

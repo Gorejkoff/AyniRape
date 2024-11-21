@@ -1,5 +1,5 @@
 "use strict"
-
+// desktop or mobile (mouse or touchscreen)
 const isMobile = {
    Android: function () { return navigator.userAgent.match(/Android/i) },
    BlackBerry: function () { return navigator.userAgent.match(/BlackBerry/i) },
@@ -13,9 +13,8 @@ const isMobile = {
 const isPC = !isMobile.any();
 if (isPC) { document.body.classList.add('_pc') } else { document.body.classList.add('_touch') };
 
-// медиазапрос
+// медиазапросы
 const MAX1024 = window.matchMedia('(max-width: 1023.98px)');
-
 
 function throttle(callee, timeout) {
    let timer = null;
@@ -28,6 +27,139 @@ function throttle(callee, timeout) {
       }, timeout)
    }
 }
+
+// window.addEventListener('load', (event) => {});
+
+const HEADER_SEARCH_FORM = document.getElementById('header-search-form');
+const HEADER_SEARCH_IMPUT = document.getElementById('header-search-input');
+const HEADER_TOP = document.getElementById('header-top');
+const HEADER = document.getElementById('header');
+
+
+function setVarHeight() {
+   document.body.style.setProperty('--header-h', HEADER.offsetHeight + "px")
+   document.body.style.setProperty('--header-top-h', HEADER_TOP.offsetHeight + "px")
+}
+
+const varHeight = throttle(setVarHeight, 100);
+varHeight();
+
+HEADER_SEARCH_FORM.addEventListener('blur', () => {
+   closeSearch();
+}, { 'capture': true })
+
+
+window.addEventListener('resize', () => {
+   if (!MAX1024.matches) {
+      closeMobileMenu();
+      closeSearch();
+   }
+   varHeight();
+})
+
+
+// ** ======================= ALL CLICK ======================  ** //
+document.documentElement.addEventListener("click", (event) => {
+   if (event.target.closest('#button-open-mobile-menu')) {
+      openMobileMenu();
+   }
+   if (event.target.closest('#button-close-mobile-menu')) {
+      closeMobileMenu();
+   }
+   if (event.target.closest('#button-open-search')) {
+      openSearch()
+   }
+   if (event.target.closest('.js-copy-article')) {
+      navigator.clipboard.writeText(event.target.closest('.js-copy-article').innerText)
+   }
+   if (event.target.closest('#basket-button')) {
+      openBasket();
+   }
+   if (event.target.closest('#close-basket')) {
+      closeBasket();
+   }
+})
+
+
+function openMobileMenu() {
+   document.body.classList.add('is-open-menu');
+}
+function openSearch() {
+   document.body.classList.add('is-open-search');
+   HEADER_SEARCH_IMPUT.focus();
+}
+function closeMobileMenu() {
+   document.body.classList.remove('is-open-menu');
+}
+function closeSearch() {
+   document.body.classList.remove('is-open-search');
+}
+function openBasket() {
+   document.body.classList.add('open-basket');
+}
+function closeBasket() {
+   document.body.classList.remove('open-basket');
+}
+
+
+
+
+// перемещение блоков при адаптиве
+// data-da=".class,3,768" 
+// класс родителя куда перемещать
+// порядковый номер в родительском блоке куда перемещается начиная с 0 как индексы массива
+// ширина экрана min-width
+// два перемещения: data-da=".class,3,768,.class2,1,1024"
+const ARRAY_DATA_DA = document.querySelectorAll('[data-da]');
+ARRAY_DATA_DA.forEach(function (e) {
+   const dataArray = e.dataset.da.split(',');
+   const addressMove = searchDestination(e, dataArray[0]);
+   const addressMoveSecond = dataArray[3] && searchDestination(e, dataArray[3]);
+   const addressParent = e.parentElement;
+   const listChildren = addressParent.children;
+   const mediaQuery = window.matchMedia(`(min-width: ${dataArray[2]}px)`);
+   const mediaQuerySecond = dataArray[5] && window.matchMedia(`(min-width: ${dataArray[5]}px)`);
+   for (let i = 0; i < listChildren.length; i++) { !listChildren[i].dataset.n && listChildren[i].setAttribute('data-n', `${i}`) };
+   mediaQuery.matches && startChange(mediaQuery, addressMove, e, listChildren, addressParent, dataArray);
+   if (mediaQuerySecond && mediaQuerySecond.matches) moving(e, dataArray[4], addressMoveSecond);
+   mediaQuery.addEventListener('change', () => { startChange(mediaQuery, addressMove, e, listChildren, addressParent, dataArray) });
+   if (mediaQuerySecond) mediaQuerySecond.addEventListener('change', () => {
+      if (mediaQuerySecond.matches) { moving(e, dataArray[4], addressMoveSecond); return; };
+      startChange(mediaQuery, addressMove, e, listChildren, addressParent, dataArray);
+   });
+});
+
+function startChange(mediaQuery, addressMove, e, listChildren, addressParent, dataArray) {
+   if (mediaQuery.matches) { moving(e, dataArray[1], addressMove); return; }
+   if (listChildren.length > 0) {
+      for (let z = 0; z < listChildren.length; z++) {
+         if (listChildren[z].dataset.n > e.dataset.n) {
+            listChildren[z].before(e);
+            break;
+         } else if (z == listChildren.length - 1) {
+            addressParent.append(e);
+         }
+      }
+      return;
+   }
+   addressParent.prepend(e);
+};
+
+function searchDestination(e, n) {
+   if (e.classList.contains(n.slice(1))) { return e }
+   if (e.parentElement.querySelector(n)) { return e.parentElement.querySelector(n) };
+   return searchDestination(e.parentElement, n);
+}
+
+function moving(e, order, addressMove) {
+   if (order == "first") { addressMove.prepend(e); return; };
+   if (order == "last") { addressMove.append(e); return; };
+   if (addressMove.children[order]) { addressMove.children[order].before(e); return; }
+   addressMove.append(e);
+}
+
+
+
 if (document.querySelector('.filter')) {
    // переменные
    const FORM_FILTER = document.forms.filter;
@@ -269,4 +401,281 @@ function closeModal(event) {
    if (!document.querySelector('.js-modal-visible')) {
       document.body.classList.remove('body-overflow');
    }
+}
+if (document.querySelector('.basket__count')) {
+   document.body.addEventListener('click', (event) => {
+      if (event.target.closest('.basket__dicrement')) {
+         const input = event.target.closest('.basket__count').querySelector('input');
+         input.value = Number(input.value) - 1;
+         validationQuantityBasket(input);
+      }
+      if (event.target.closest('.basket__increment')) {
+         const input = event.target.closest('.basket__count').querySelector('input');
+         input.value = Number(input.value) + 1;
+      }
+   })
+
+   // проверка количесва товара в корзине
+   const QUANTITY_BASKET = document.querySelectorAll('.basket__count input');
+   QUANTITY_BASKET.forEach((e) => {
+      e.addEventListener('input', () => validationQuantityBasket(e))
+   })
+   function validationQuantityBasket(e) {
+      if (e.value < 1) { e.value = 1; }
+   }
+}
+// js-tabs-bod - тело вкладки
+// js-tabs-hover - работает hover на ПК, отключает клик на ПК, для touchscreen надо раставить js-tabs-click или js-tabs-toggle
+// js-tabs-closing - вместе с js-tabs-bod закрыть вкладку при событии вне данной вкладки
+// js-tabs-click - открыть при клике
+// js-tabs-toggle - открыть или закрыть при клике
+// js-tabs-shell - оболочка скрывающая js-tabs-inner
+// js-tabs-inner - оболочка контента
+// 
+//  работает в связке с определением touchscreen  (isPC)
+
+
+class Tabs {
+   constructor() {
+      this.listClosingTabs = document.querySelectorAll('.js-tabs-closing');
+      this.listHover = document.querySelectorAll('.js-tabs-hover');
+      this.listTabsBody = document.querySelectorAll('.js-tabs-body');
+   };
+   init = () => {
+      document.body.addEventListener('click', this.eventClick);
+      if (isPC) document.body.addEventListener('mouseover', this.eventMouseOver)
+      window.addEventListener('resize', this.resize);
+   };
+   eventMouseOver = (event) => {
+      if (event.target.closest('.js-tabs-hover')) this.openTabs(event);
+      this.closeAllHover(event);
+   };
+   eventClick = (event) => {
+      if (isPC && event.target.closest('.js-tabs-hover')) return;
+      this.closeAll(event);
+      if (event.target.closest('.js-tabs-click')) this.openTabs(event);
+      if (event.target.closest('.js-tabs-toggle')) this.toggleTabs(event);
+   };
+   openTabs = (event) => {
+      const body = event.target.closest('.js-tabs-body');
+      if (!body) return;
+      body.classList.add('js-tabs-open');
+      this.setHeight(body);
+   };
+   closeTabs = (body) => {
+      body.classList.remove('js-tabs-open');
+      this.clearHeight(body);
+   };
+   closeAll = (event) => {
+      const body = event.target.closest('.js-tabs-body');
+      if (this.listClosingTabs.length == 0 && body) return;
+      this.listClosingTabs.forEach((e) => { if (e !== body) this.closeTabs(e); })
+   };
+   closeAllHover = (event) => {
+      const body = event.target.closest('.js-tabs-hover');
+      if (this.listHover.length == 0 && body) return;
+      this.listHover.forEach((e) => { if (e !== body) this.closeTabs(e) })
+   };
+   setHeight = (body) => {
+      const heightValue = body.querySelector('.js-tabs-inner').offsetHeight;
+      body.querySelector('.js-tabs-shell').style.height = heightValue + "px";
+   };
+   clearHeight = (body) => { body.querySelector('.js-tabs-shell').style.height = "" }
+   toggleTabs = (event) => {
+      const body = event.target.closest('.js-tabs-body');
+      if (body.classList.contains('js-tabs-open')) {
+         this.closeTabs(body);
+         return;
+      }
+      this.openTabs(event);
+   };
+   throttle = () => {
+      let timer = null;
+      return () => {
+         if (timer) return;
+         timer = setTimeout(() => {
+            const unlocked = document.querySelectorAll('.js-tabs-open');
+            unlocked.forEach((e) => { this.setHeight(e) })
+            clearTimeout(timer);
+            timer = null;
+         }, 100)
+      }
+   };
+   resize = this.throttle();
+}
+new Tabs().init()
+
+
+
+
+
+
+
+
+class TabsOpen {
+   constructor(options) {
+      this.tabBody = options.tabBody;
+      this.tabButton = options.tabButton;
+      this.tabContent = options.tabContent;
+      this.tabContentInner = options.tabContentInner;
+      this.tabBodySecond = options.tabBodySecond;
+      this.tabButtonSecond = options.tabButtonSecond;
+      this.tabContentSecond = options.tabContentSecond;
+      this.tabContentInnerSecond = options.tabContentInnerSecond;
+      this.pc = document.body.classList.contains('_pc'); // true если dasktop, иначе false. Работает в связке с isMobile
+      this.parentTabs = document.querySelector(options.name);
+      this.tabsList = this.parentTabs.querySelectorAll(options.tabBody);
+      this.tabsListSecond = this.parentTabs.querySelectorAll(options.tabBodySecond);
+      this.hover = options.hover == false ? false : true; // реакция табов на hover
+      this.closeAllTabs = options.closeAllTabs == true ? true : false; // закрывать все табы
+      this.closeClickContent = options.closeClickContent == true ? true : false; // закрыть при клике в области контента таба
+      this.externalFunction = options.externalFunction; // внешняя функция для события click
+      this.externalFunctionResize = options.externalFunctionResize; // внешняя функция для события resize
+   }
+   init = () => {
+      document.body.addEventListener('click', this.examinationClick);
+      this.hover && this.pc && document.body.addEventListener('mouseover', this.examinationHover);
+      this.resize();
+   };
+   examinationClick = (event) => {
+      this.externalFunction && this.externalFunction(event);
+      if (this.hover && this.pc) return;
+      let eventElement = this.closeClickContent ? event.target.closest(this.tabBody) : event.target.closest(this.tabButton);
+      if (eventElement && event.target.closest(this.tabBody).classList.contains('active')) {
+         this.close(event.target.closest(this.tabBody));
+         return;
+      }
+      if (eventElement && !this.closeAllTabs) {
+         this.open(event.target.closest(this.tabBody));
+         return;
+      }
+      if (event.target.closest(this.tabBodySecond)) {
+         if (event.target.closest(this.tabBodySecond).classList.contains('active')) {
+            this.closeSecond(event.target.closest(this.tabBodySecond));
+         } else {
+            this.openSecond(event.target.closest(this.tabBodySecond));
+         }
+         this.open(event.target.closest(this.tabBody));
+      }
+
+      if (eventElement) {
+         this.tabsList.forEach((element) => {
+            element == event.target.closest(this.tabBody) ? this.open(element) : this.close(element);
+         });
+         return;
+      }
+      if (!event.target.closest(this.tabContent) && this.closeAllTabs) {
+         this.tabsList.forEach(element => this.close(element));
+         this.tabsListSecond.forEach(element => this.closeSecond(element));
+      }
+   }
+   examinationHover = (event) => {
+      if (event.target.closest(this.tabBody)) {
+         this.tabsList.forEach((element) => {
+            element == event.target.closest(this.tabBody) ? this.open(element) : this.close(element);
+         });
+      } else {
+         this.tabsList.forEach(element => this.close(element));
+      }
+      if (event.target.closest(this.tabBodySecond)) {
+         this.tabsListSecond.forEach((element) => {
+            element == event.target.closest(this.tabBodySecond) ? this.openSecond(element) : this.closeSecond(element);
+         });
+         this.open(event.target.closest(this.tabBody));
+      } else {
+         this.tabsListSecond.forEach(element => this.closeSecond(element));
+         this.open(event.target.closest(this.tabBody));
+      }
+   }
+   open = (element) => {
+      element.querySelector(this.tabContent).style.height = this.getSize(element) + 'px';
+      element.classList.add('active');
+   };
+   openSecond = (element) => {
+      element.querySelector(this.tabContentSecond).style.height = this.getSizSecond(element) + 'px';
+      element.classList.add('active');
+   };
+   close = (element) => {
+      if (element.querySelector(this.tabContent)) element.querySelector(this.tabContent).style.height = '';
+      element.classList.remove('active');
+      this.tabsListSecond.forEach(element => this.closeSecond(element));
+   };
+   closeSecond = (element) => {
+      if (element.querySelector(this.tabContentSecond)) element.querySelector(this.tabContentSecond).style.height = '';
+      element.classList.remove('active');
+   };
+   adjustment = () => {
+      this.tabsList.forEach((e) => e.classList.contains('active') && this.open(e));
+      this.externalFunctionResize && this.externalFunctionResize()
+   };
+   getSize = (element) => { return element.querySelector(this.tabContentInner).clientHeight };
+   getSizSecond = (element) => { return element.querySelector(this.tabContentInnerSecond).clientHeight };
+   resize = () => window.addEventListener('resize', this.adjustment);
+}
+
+/* if (document.querySelector('.calculator')) {
+   new TabsOpen({
+      name: '#modal-calculator',
+      tabBody: '.js-tab-body',
+      tabButton: '.js-tab-button',
+      tabContent: '.js-tab-content',
+      tabContentInner: '.js-tab-content-inner',
+      hover: false,
+      closeAllTabs: true,
+      closeClickContent: false,
+      externalFunction: choise,
+   }).init();
+}
+
+function choise(event) {
+   if (event.target.closest('.js-tabs-value')) {
+      let tabBbody = event.target.closest(this.tabBody);
+      let tabSelect = tabBbody.querySelector('.js-tab-selected');
+      let valueInput = event.target.closest('.js-tabs-value').querySelector('input').value;
+      tabSelect.innerHTML = valueInput;
+   }
+} */
+
+
+/* if (document.querySelector('.catalog-nav')) {
+
+   const first = new TabsOpen({
+      name: '.catalog-nav',
+      tabBody: '.catalog-nav__first',
+      tabButton: '.catalog-nav__first-button',
+      tabContent: '.catalog-nav__second',
+      tabContentInner: '.catalog-nav__second-inner',
+      tabBodySecond: '.catalog-nav__second-item',
+      tabButtonSecond: '.catalog-nav__second-button',
+      tabContentSecond: '.catalog-nav__third',
+      tabContentInnerSecond: '.catalog-nav__third-inner',
+      hover: false,
+      closeAllTabs: true,
+      closeClickContent: false,
+   }).init();
+} */
+
+class TabsSwitching {
+   constructor(body__buttons, button, tab, execute) {
+      this.name_button = button;
+      this.body__buttons = document.querySelector(body__buttons);
+      this.button = document.querySelectorAll(button);
+      this.tab = document.querySelectorAll(tab);
+      this.execute = execute;
+   }
+   eventClick = () => {
+      this.body__buttons.addEventListener('click', (event) => {
+         if (event.target.closest(this.name_button)) {
+            let n = event.target.closest(this.name_button).dataset.button;
+            this.button.forEach((e) => { e.classList.toggle('active', e.dataset.button == n) });
+            if (this.tab.length > 0) { this.tab.forEach((e) => { e.classList.toggle('active', e.dataset.tab == n) }) }
+            if (this.execute) { this.execute() };
+         }
+      })
+   }
+}
+
+if (document.querySelector('.bestsellers__body')) {
+   let tab_1 = new TabsSwitching('.bestsellers__nav', '.bestsellers__button', '.bestsellers__swiper');
+   tab_1.eventClick();
 }

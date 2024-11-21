@@ -1,0 +1,16 @@
+<section class="swiper-section margin-section">
+   <div class="swiper-section__container">
+      <div class="swiper-section__title">
+         <h2 class="title-section">@@title</h2>
+      </div>
+      <div class="swiper-section__swiper swiper">
+         <div class="swiper-wrapper">
+            @@loop('../Card-Product/card.html','json/card-list-1.json')
+         </div>
+      </div>
+      <div class="swiper-section__buttons" data-da=".swiper-section__title,1,1024">
+         @@include('../Button-swiper/Button-swiper.html',{prev:"swiper-section__prev",next:"swiper-section__next"})
+      </div>
+   </div>
+   </div>
+</section>

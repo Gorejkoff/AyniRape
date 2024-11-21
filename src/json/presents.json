@@ -1,0 +1,20 @@
+[
+   {
+      "title": "Rapé",
+      "text": "A sacred traditional healing practice of the tribal peoples of Peru and Brazil, administered by blowing into the nose using special tubes.",
+      "image": "image-1.png",
+      "link": "404.html"
+   },
+   {
+      "title": "Tepi and Kuripe",
+      "text": "To blow the sacred mixture, you will need special tubes - tepi and kuripe.",
+      "image": "image-2.png",
+      "link": "404.html"
+   },
+   {
+      "title": "Other products",
+      "text": "Products and accessories for your ceremonies",
+      "image": "image-3.png",
+      "link": "other-products.html"
+   }
+]

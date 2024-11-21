@@ -1,0 +1,33 @@
+@use '../assets/variablesSCSS.scss' as *;
+
+.pagination {
+   display: flex;
+   align-items: center;
+   gap: 10px;
+
+   li {
+      list-style: none;
+   }
+
+   a {
+      display: block;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      color: var(--color-white);
+
+      background-color: var(--color-blue-crayola);
+      border-radius: 17px;
+      transition: background-color $tr-time;
+
+      &:hover {
+         background-color: var(--color-yellow-broom);
+      }
+
+   }
+
+
+}

@@ -94,6 +94,10 @@ h6 {
 	font-weight: inherit;
 }
 
+:root {
+	scrollbar-gutter: stable;
+}
+
 input[type="number"] {
 	-moz-appearance: textfield;
 }
@@ -102,4 +106,10 @@ input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
 	-webkit-appearance: none;
 	margin: 0px;
+}
+
+a,
+button {
+	color: inherit;
+	font-size: inherit;
 }

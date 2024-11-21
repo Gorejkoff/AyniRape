@@ -1,0 +1,52 @@
+<div class="bestsellers margin-section">
+   <section class="bestsellers__container">
+      <div class="bestsellers__header">
+         <h2 class="title-section">Bestsellers</h2>
+      </div>
+
+      <div class="bestsellers__body">
+
+         <div class="bestsellers__nav">
+            <ul>
+               <li><button class="bestsellers__button active" data-button="1" type="button">All products</button></li>
+               <li><button class="bestsellers__button " data-button="2" type="button">Rapé</button></li>
+               <li><button class="bestsellers__button " data-button="3" type="button">Tepi and Kuripe</button></li>
+               <li><button class="bestsellers__button " data-button="4" type="button">Other products</button></li>
+            </ul>
+         </div>
+
+         <div class="bestsellers__content">
+
+            <div class="bestsellers__swiper swiper active" data-tab="1">
+               <div class="swiper-wrapper">
+                  @@loop('../Card-Product/card.html','json/card-list-1.json')
+               </div>
+            </div>
+
+            <div class="bestsellers__swiper swiper" data-tab="2">
+               <div class="bestsellers__swiper-wrapper swiper-wrapper">
+                  @@loop('../Card-Product/card.html','json/card-list-2.json')
+               </div>
+            </div>
+
+            <div class="bestsellers__swiper swiper" data-tab="3">
+               <div class="bestsellers__swiper-wrapper swiper-wrapper">
+                  @@loop('../Card-Product/card.html','json/card-list-3.json')
+               </div>
+            </div>
+
+            <div class="bestsellers__swiper swiper" data-tab="4">
+               <div class="bestsellers__swiper-wrapper swiper-wrapper">
+                  @@loop('../Card-Product/card.html','json/card-list-4.json')
+               </div>
+            </div>
+
+         </div>
+
+         <div class="bestsellers__buttons-swiper" data-da=".bestsellers__header,2,768">
+            @@include('../Button-swiper/Button-swiper.html',{prev: "bestsellers-prev", next: "bestsellers-next"})
+         </div>
+
+      </div>
+   </section>
+</div>

@@ -1,0 +1,38 @@
+@use '../assets/variablesSCSS.scss' as *;
+
+.bread-crumbs {
+
+   &__body {
+      margin-top: 20px;
+      margin-bottom: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+
+      a {
+         font-weight: 500;
+         font-size: 16px;
+         color: var(--color-black);
+         transition: color $tr-time;
+
+         &:hover {
+            color: var(--color-yellow-broom);
+         }
+      }
+
+      li {
+         list-style: none;
+
+         &:not(:last-child) a:after {
+            content: '|';
+            margin-left: 14px;
+         }
+
+         &:last-child a {
+            color: var(--color-blue-crayola);
+            pointer-events: none;
+         }
+      }
+
+   }
+}
