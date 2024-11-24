@@ -19,6 +19,8 @@
          </div>
 
          <!-- есть товар в корзине (начало) -->
+         @@if(have == true){
+
          <div class="basket__list scroll">
 
             <div class="basket__item">
@@ -135,17 +137,20 @@
          <div class="basket__link">
             <a href="order.html" class="general-button">Place an order</a>
          </div>
+         }
          <!-- есть товар в корзине (конец) -->
 
 
 
          <!-- нет товара в корзине (начало) -->
-         <!--          <div class="basket__empty">
+         @@if(have !== true){
+         <div class="basket__empty">
             <div class="basket__empty-text">Cart is empty</div>
             <div class="basket__link">
                <a href="#0" class="general-button">Place an order</a>
             </div>
-         </div> -->
+         </div>
+         }
          <!-- нет товара в корзине (конец) -->
 
 
