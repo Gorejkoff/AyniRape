@@ -14,7 +14,8 @@ const isPC = !isMobile.any();
 if (isPC) { document.body.classList.add('_pc') } else { document.body.classList.add('_touch') };
 
 // медиазапросы
-const MAX1024 = window.matchMedia('(max-width: 1023.98px)');
+const MIN1024 = window.matchMedia('(min-width: 1024px)');
+const MIN768 = window.matchMedia('(min-width: 768px)');
 
 function throttle(callee, timeout) {
    let timer = null;
@@ -34,7 +35,7 @@ const HEADER_SEARCH_FORM = document.getElementById('header-search-form');
 const HEADER_SEARCH_IMPUT = document.getElementById('header-search-input');
 const HEADER_TOP = document.getElementById('header-top');
 const HEADER = document.getElementById('header');
-
+const allTabsBlock = document.querySelectorAll('.js-tabs-block');
 
 function setVarHeight() {
    document.body.style.setProperty('--header-h', HEADER.offsetHeight + "px")
@@ -50,11 +51,12 @@ HEADER_SEARCH_FORM.addEventListener('blur', () => {
 
 
 window.addEventListener('resize', () => {
-   if (!MAX1024.matches) {
+   if (MIN1024.matches) {
       closeMobileMenu();
       closeSearch();
    }
    varHeight();
+   if (MIN768.matches && allTabsBlock.length > 0) closeTabsBlockThrottle();
 })
 
 
@@ -78,6 +80,8 @@ document.documentElement.addEventListener("click", (event) => {
    if (event.target.closest('#close-basket')) {
       closeBasket();
    }
+   if (event.target.closest('.js-button-tabs')) {
+   }
 })
 
 
@@ -96,10 +100,19 @@ function closeSearch() {
 }
 function openBasket() {
    document.body.classList.add('open-basket');
+   if (MIN1024.matches) {
+      window.scrollTo({
+         top: 0,
+         left: 0,
+         behavior: "smooth"
+      })
+   }
 }
 function closeBasket() {
    document.body.classList.remove('open-basket');
 }
-
-
+function closeTabsBlock() {
+   allTabsBlock.forEach((e) => { tabs.closeTabs(e) })
+}
+const closeTabsBlockThrottle = throttle(closeTabsBlock, 100);
 

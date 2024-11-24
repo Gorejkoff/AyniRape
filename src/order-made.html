@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+   @@include('html/1_head.html',{"title":"Order is Made"})
+</head>
+
+
+<body>
+
+   <div class="wrapper">
+
+      @@include('html/2_header-top.html',{})
+      @@include('html/2_header.html',{})
+
+      <div class="main">
+
+         @@include('html/Bread_Crumbs/Bread_Crumbs.html',{"list": [ {"name": "Main", "link": "index.html"}, {"name": "Placing an order", "link": "order-made.html"}]})
+
+         <section class="made margin-section">
+            <div class="made__container">
+
+               <div class="made__body">
+                  <div class="made__content">
+                     <div class="title-section">Thank you for your order</div>
+                     <div class="made__order">
+                        <div class="made__name">Order No:</div>
+                        <div>34345436</div>
+                     </div>
+                     <div class="made__text">We have already started processing your order, the average processing time is 30 minutes, you can track your order and find out all the information in your personal account or by <a href="#0">following the link</a></div>
+                     <div class="made__button">
+                        <a href="index.html" class="general-button">Return to home page</a>
+                     </div>
+                  </div>
+                  <div class="made__image">
+                     <img src="@img/png/image-8.png" alt="индеец">
+                  </div>
+               </div>
+
+            </div>
+         </section>
+
+      </div>
+
+      @@include('html/4_footer.html',{})
+
+   </div>
+
+   @@include('html/Basket/Basket.html',{})
+
+   @@include('html/Bottom-Menu/Bottom-menu.html',{})
+
+   @@include('html/Menu-mobile.html/menu-mobile.html',{})
+
+   @@include('html/3_scripts.html',{swiper: true,})
+
+</body>
+
+</html>

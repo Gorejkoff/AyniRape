@@ -345,3 +345,80 @@ body {
 ._pc .hover-text:hover {
    color: var(--color-yellow-broom);
 }
+
+.input {
+   padding: 10px;
+   width: 100%;
+   font-weight: 400;
+   font-size: 16px;
+   color: var(--color-black);
+   border-bottom: 1px solid var(--color-blue-crayola);
+   caret-color: var(--color-yellow-broom);
+
+   &::placeholder {
+      color: var(--color-blue-crayola);
+   }
+
+   &:focus {
+      border-color: var(--color-yellow-broom);
+   }
+
+   &:disabled {
+      color: var(--color-smoky-white);
+      border-color: var(--color-smoky-white);
+   }
+
+   &.error {
+      color: var(--color-red);
+      border-color: var(--color-red);
+   }
+
+   &.error::placeholder {
+      color: var(--color-red);
+   }
+}
+
+.input-ratio {
+   cursor: pointer;
+
+   input {
+      display: none;
+   }
+
+   input:checked~* .selection-mark,
+   input:checked~.selection-mark {
+      border: 1px solid var(--color-black);
+
+      &::after {
+         opacity: 1;
+      }
+   }
+}
+
+.selection-mark {
+   position: relative;
+   --size: 22px;
+   width: var(--size);
+   min-width: var(--size);
+   height: var(--size);
+   border-radius: 50%;
+   border: 1px solid var(--color-blue-crayola);
+
+   &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: calc(var(--size) / 4);
+      height: calc(var(--size) / 4);
+      background-color: var(--color-yellow-broom);
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacyti $tr-time;
+   }
+}
+
+.shadow {
+   box-shadow: -3px 0 16px 0 rgba(51, 51, 51, 0.3);
+}

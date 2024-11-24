@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+   @@include('html/1_head.html',{"title":"Order"})
+</head>
+
+
+<body>
+
+   <div class="wrapper">
+
+      @@include('html/2_header-top.html',{})
+      @@include('html/2_header.html',{})
+
+      <div class="main">
+
+         @@include('html/Bread_Crumbs/Bread_Crumbs.html',{"list": [ {"name": "Main", "link": "index.html"}, {"name": "Placing an order", "link": "order.html"}]})
+
+         <section class="order margin-section">
+            <div class="order__container">
+               <form class="order__form" action="#" method="post" name="" id="">
+
+                  <h1 class="order__title title-section">Placing an order</h1>
+                  <div class="order__body">
+                     <div class="order__shell">
+                        @@include('html/Order/Enter.html',{})
+                        @@include('html/Order/Delivery.html',{})
+                        @@include('html/Order/Payment.html',{})
+
+                     </div>
+                     @@include('html/Order/Information.html',{})
+                  </div>
+
+               </form>
+            </div>
+         </section>
+
+      </div>
+
+      @@include('html/4_footer.html',{})
+
+   </div>
+
+   @@include('html/Basket/Basket.html',{})
+
+   @@include('html/Bottom-Menu/Bottom-menu.html',{})
+
+   @@include('html/Menu-mobile.html/menu-mobile.html',{})
+
+   @@include('html/3_scripts.html',{swiper: true,})
+
+</body>
+
+</html>

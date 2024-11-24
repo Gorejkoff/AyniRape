@@ -1,0 +1,65 @@
+.made {
+
+   &__container {}
+
+   &__body {
+      gap: 20px;
+
+      @media (min-width:768px) {
+         display: flex;
+      }
+   }
+
+   &__content {
+      margin-bottom: 40px;
+
+      @media (min-width:768px) {
+         margin-bottom: 0;
+      }
+
+      &>*:not(:last-child) {
+         margin-bottom: 20px;
+      }
+   }
+
+   &__order {
+      display: flex;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 20px;
+
+      @media (min-width:768px) {
+         font-size: 26px;
+      }
+   }
+
+   &__name {
+      color: var(--color-blue-crayola);
+   }
+
+   &__text {
+      font-size: 14px;
+
+      @media (min-width:768px) {
+         font-size: 16px;
+      }
+
+      a {
+         font-weight: 500;
+         color: var(--color-yellow-broom);
+      }
+   }
+
+   &__button {
+      display: flex;
+      justify-content: flex-start;
+   }
+
+   &__image {
+      flex: 0 0 40.6%;
+
+      img {
+         width: 100%;
+      }
+   }
+}

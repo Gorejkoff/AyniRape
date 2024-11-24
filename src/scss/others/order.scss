@@ -1,0 +1,245 @@
+@use '../assets/variablesSCSS.scss' as *;
+
+.order {
+
+   &__title {
+      margin-bottom: 20px;
+   }
+
+   &__form {}
+
+   &__body {
+      @media (min-width:1024px) {
+         display: grid;
+         gap: 20px;
+         grid-template-columns: 1fr 1fr 1fr;
+      }
+   }
+
+   &__shell {
+      margin-bottom: 40px;
+
+      @media (min-width:1024px) {
+         margin-bottom: 0;
+         grid-column: span 2;
+      }
+   }
+
+   &__enter {
+      margin-bottom: 40px;
+   }
+
+   &__group-title {
+      margin-bottom: 20px;
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--color-blue-crayola);
+
+      @media (min-width:768px) {
+         font-size: 26px;
+      }
+   }
+
+   &__choose {
+      margin-bottom: 20px;
+   }
+
+   &__enter-block-title {
+      margin-bottom: 20px;
+      font-weight: 700;
+      font-size: 18px;
+
+      @media (min-width:768px) {
+         font-size: 20px;
+      }
+   }
+
+   &__enter-block {
+      margin-bottom: 20px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+
+      @media (min-width:768px) {
+         grid-template-columns: 1fr 1fr;
+      }
+   }
+
+   &__enter-input-divide {
+      flex: 0 0 50%;
+   }
+
+   &__info {
+      display: flex;
+      align-items: flex-start;
+   }
+
+   &__info-body {
+      padding: 20px;
+      width: 100%;
+      background-color: var(--color-black);
+      color: var(--color-white);
+
+   }
+
+   &__info-title {
+      margin-bottom: 20px;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 100%;
+   }
+
+   &__info-grid {
+      margin-bottom: 10px;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+
+      &.grid-header {
+         color: var(--color-blue-crayola);
+
+         .order__info-product,
+         .order__info-quantity,
+         .order__info-price {
+            margin-bottom: 20px;
+            font-weight: 400;
+            font-size: 12px;
+         }
+      }
+   }
+
+   &__info-content {
+      padding-bottom: 24px;
+      counter-reset: info;
+      border-bottom: 1px solid var(--color-blue-crayola);
+
+      .order__info-product::before {
+         content: counter(info);
+         counter-increment: info;
+         position: absolute;
+         top: 0;
+         left: 0;
+         color: var(--color-blue-crayola);
+      }
+   }
+
+   &__info-product {
+      position: relative;
+      padding-left: 1.5em;
+      line-height: 136%;
+   }
+
+   &__info-quantity {
+      font-weight: 500;
+      font-size: 14px;
+      text-align: center;
+   }
+
+   &__info-price {
+      font-weight: 800;
+      font-size: 16px;
+      text-align: end;
+   }
+
+   &__info-footer {
+      margin-bottom: 20px;
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+   }
+
+   &__info-footer-name {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 114%;
+      color: var(--color-blue-crayola);
+   }
+
+   &__info-footer-total {
+      font-weight: 800;
+      font-size: 20px;
+      line-height: 80%;
+      text-align: right;
+      color: var(--color-yellow-broom);
+   }
+
+   &__info-footer-value {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 114%;
+      text-align: right;
+
+   }
+
+   &__info-footer-button {
+      display: flex;
+      justify-content: center;
+   }
+
+
+
+   &__delivery {
+      margin-bottom: 40px;
+   }
+
+
+   &__delivery-item {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+   }
+
+   &__delivery-check {}
+
+   &__delivery-value {
+      font-weight: 500;
+      line-height: 136%;
+   }
+
+   &__delivery-name {
+      display: block;
+      font-size: 16px;
+      line-height: 136%;
+   }
+
+   &__delivery-data {
+      display: block;
+      font-weight: 500;
+      font-size: 14px;
+      color: var(--color-blue-crayola);
+   }
+
+   &__payment {}
+
+   &__payment-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+
+      @media (min-width:768px) {
+         grid-template-columns: 1fr 1fr;
+      }
+   }
+
+   &__payment-mark {
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--color-blue-crayola);
+      border: 1px solid var(--color-transparent);
+      transition: color $tr-time, border-color $tr-time;
+   }
+
+   &__payment-text {
+      flex: 1 1 auto;
+   }
+
+}
+
+.input-ratio input:checked+.order__payment-mark {
+   color: var(--color-black);
+   border: 1px solid var(--color-yellow-broom);
+
+}
