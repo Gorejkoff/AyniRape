@@ -1,10 +1,10 @@
 @use '../assets/variablesSCSS.scss' as *;
 
 .bread-crumbs {
+   margin-top: 20px;
+   margin-bottom: 40px;
 
    &__body {
-      margin-top: 20px;
-      margin-bottom: 40px;
       display: flex;
       flex-wrap: wrap;
       gap: 14px;

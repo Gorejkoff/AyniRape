@@ -617,7 +617,7 @@ body.open-basket {
 
 .header-top {
   position: relative;
-  z-index: 25;
+  z-index: 26;
   background-color: var(--color-black);
   display: none;
 }
@@ -1002,9 +1002,12 @@ body.open-basket {
   width: 14px;
 }
 
-.bread-crumbs__body {
+.bread-crumbs {
   margin-top: 20px;
   margin-bottom: 40px;
+}
+
+.bread-crumbs__body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3281,6 +3284,104 @@ body.open-basket {
 
 .made__image img {
   width: 100%;
+}
+
+.enter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.enter__container {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.enter__title {
+  margin-bottom: 20px;
+}
+
+.enter__form {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0 auto;
+  max-width: 675px;
+}
+
+.enter__form-title {
+  margin-bottom: 10px;
+  font-weight: 700;
+  font-size: 26px;
+  text-align: center;
+}
+
+.enter__form-text {
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.enter__form-inputs {
+  margin: 0 auto;
+  width: 444px;
+}
+
+.enter__form-inputs input {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.enter__form-inputs a {
+  margin-top: 20px;
+}
+
+.enter__code {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+}
+
+.enter__code input {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 60px;
+          flex: 0 0 60px;
+  max-width: 60px;
+  height: 64px;
+  border: 1px solid var(--color-blue-crayola);
+  text-align: center;
+  font-weight: 700;
+  font-size: 20px;
+  caret-color: var(--color-yellow-broom);
 }
 
 @media (min-width: 768px) {

@@ -116,3 +116,23 @@ function closeTabsBlock() {
 }
 const closeTabsBlockThrottle = throttle(closeTabsBlock, 100);
 
+
+// переход фокуса при вводе кода
+const INPUTS_CODE = document.querySelectorAll('.enter__code input');
+if (INPUTS_CODE.length > 0) {
+   INPUTS_CODE.forEach((e, i) => {
+      e.addEventListener('input', () => {
+         if (e.value.length > 1) { e.value = e.value.slice(0, 1) }
+         if (e.value.length == 0 && INPUTS_CODE[i - 1]) { INPUTS_CODE[i - 1].focus() }
+         if (e.value.length == 1 && INPUTS_CODE.length > i + 1) { INPUTS_CODE[i + 1].focus() }
+      })
+   })
+   INPUTS_CODE.forEach((e, i) => {
+      e.addEventListener('paste', (event) => {
+         paste(event.clipboardData.getData('text/plain'));
+      })
+   })
+   function paste(val) {
+      INPUTS_CODE.forEach((e, i) => { val[i] ? e.value = val[i] : e.value = "" })
+   }
+}
