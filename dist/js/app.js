@@ -137,6 +137,7 @@ if (INPUTS_CODE.length > 0) {
    }
 }
 
+
 // перемещение блоков при адаптиве
 // data-da=".class,3,768" 
 // класс родителя куда перемещать
@@ -435,6 +436,40 @@ function closeModal(event) {
       document.body.classList.remove('body-overflow');
    }
 }
+if (document.querySelector('#personal')) {
+   const formItem = document.forms.personal
+   const listInputs = formItem.querySelectorAll('.input');
+   const buttonEdit = document.getElementById('personal-edit');
+   const buttonSave = document.getElementById('personal-save');
+
+   document.body.addEventListener('click', (event) => {
+
+      if (event.target.closest('#personal-edit')) {
+         edit();
+      }
+      if (event.target.closest('#personal-save')) {
+         save();
+      }
+
+   })
+
+   function edit() {
+      listInputs.forEach(element => {
+         element.disabled = false;
+      });
+      buttonEdit.style.display = "none";
+      buttonSave.style.display = "flex";
+   }
+   function save() {
+      listInputs.forEach(element => {
+         element.disabled = true;
+      });
+      buttonEdit.style.display = "flex";
+      buttonSave.style.display = "none";
+   }
+
+
+}
 if (document.querySelector('.basket__count')) {
    document.body.addEventListener('click', (event) => {
       if (event.target.closest('.basket__dicrement')) {
@@ -457,13 +492,31 @@ if (document.querySelector('.basket__count')) {
       if (e.value < 1) { e.value = 1; }
    }
 }
-// js-tabs-body - тело вкладки
+if (document.querySelector('#registration')) {
+
+
+   const REGISTRATION_BUTTON = document.getElementById('registration-button');
+   const registration = document.getElementById('registration');
+   const code = document.getElementById('code');
+
+
+   REGISTRATION_BUTTON.addEventListener('click', (event) => {
+      event.preventDefault();
+      registration.style.display = "none";
+      code.style.display = "flex";
+   })
+
+
+
+}
+// js-tabs-body - тело вкладки, в открытом состоянии добавляется класс js-tabs-open.
 // js-tabs-hover - работает hover на ПК, отключает клик на ПК, для touchscreen надо раставить js-tabs-click или js-tabs-toggle
 // js-tabs-closing - вместе с js-tabs-bod закрыть вкладку при событии вне данной вкладки
 // js-tabs-click - открыть при клике (зона клика)
 // js-tabs-toggle - открыть или закрыть при клике (зона клика)
 // js-tabs-shell - оболочка скрывающая js-tabs-inner
 // js-tabs-inner - оболочка контента
+// 
 // 
 //  работает в связке с определением touchscreen  (isPC)
 
@@ -566,8 +619,8 @@ class TabsSwitching {
 }
 
 if (document.querySelector('.bestsellers__body')) {
-   let tab_1 = new TabsSwitching('.bestsellers__nav', '.bestsellers__button', '.bestsellers__swiper', setValue);
-   tab_1.init();
+   let tab = new TabsSwitching('.tab', '.tab__button', '.bestsellers__swiper', setValue);
+   tab.init();
 }
 
 function setValue(event) {
@@ -578,4 +631,9 @@ function setValue(event) {
    let text = parent.querySelector('.js-tabs-text');
    if (!text) return;
    text.innerText = activeText.innerText;
+}
+
+if (document.querySelector('.personal__order')) {
+   let tab = new TabsSwitching('.personal__order-tab-buttons', '.personal__order-tab-button', '.personal__order-tab');
+   tab.init();
 }

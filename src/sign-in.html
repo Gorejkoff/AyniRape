@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+   @@include('html/1_head.html',{"title":"Sign In"})
+</head>
+
+
+<body>
+
+   <div class="wrapper">
+
+      @@include('html/2_header-top.html',{})
+      @@include('html/2_header.html',{})
+
+      <div class="main enter margin-section">
+
+         @@include('html/Bread_Crumbs/Bread_Crumbs.html',{"list": [ {"name": "Main", "link": "index.html"}, {"name": "Personal account", "link": "registration.html"}]})
+
+         <section class="enter__container">
+
+            <div class="enter__title title-section">Personal account</div>
+
+            <form class="enter__form" action="#" method="post" name="" id="signin">
+
+               <div class="enter__form-title">Sign in</div>
+               <div class="enter__form-text">To enter your personal account, enter your name and phone number or email and we will send you a confirmation code</div>
+
+               <div class="enter__form-inputs">
+                  <input class="input" type="text" name="mail" required placeholder="E-mail">
+                  <a class="general-button" href="personal-data.html">Confirm</a>
+               </div>
+
+            </form>
+
+         </section>
+
+
+      </div>
+
+      @@include('html/4_footer.html',{})
+
+   </div>
+
+   @@include('html/Bottom-Menu/Bottom-menu.html',{})
+
+   @@include('html/Menu-mobile.html/menu-mobile.html',{})
+
+   @@include('html/3_scripts.html',{swiper: true,})
+
+</body>
+
+</html>

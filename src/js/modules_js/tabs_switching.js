@@ -19,8 +19,8 @@ class TabsSwitching {
 }
 
 if (document.querySelector('.bestsellers__body')) {
-   let tab_1 = new TabsSwitching('.bestsellers__nav', '.bestsellers__button', '.bestsellers__swiper', setValue);
-   tab_1.init();
+   let tab = new TabsSwitching('.tab', '.tab__button', '.bestsellers__swiper', setValue);
+   tab.init();
 }
 
 function setValue(event) {
@@ -31,4 +31,9 @@ function setValue(event) {
    let text = parent.querySelector('.js-tabs-text');
    if (!text) return;
    text.innerText = activeText.innerText;
+}
+
+if (document.querySelector('.personal__order')) {
+   let tab = new TabsSwitching('.personal__order-tab-buttons', '.personal__order-tab-button', '.personal__order-tab');
+   tab.init();
 }

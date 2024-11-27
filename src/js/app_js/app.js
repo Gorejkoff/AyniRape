@@ -136,3 +136,4 @@ if (INPUTS_CODE.length > 0) {
       INPUTS_CODE.forEach((e, i) => { val[i] ? e.value = val[i] : e.value = "" })
    }
 }
+

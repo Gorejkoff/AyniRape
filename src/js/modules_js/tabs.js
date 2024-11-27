@@ -1,10 +1,11 @@
-// js-tabs-body - тело вкладки
+// js-tabs-body - тело вкладки, в открытом состоянии добавляется класс js-tabs-open.
 // js-tabs-hover - работает hover на ПК, отключает клик на ПК, для touchscreen надо раставить js-tabs-click или js-tabs-toggle
 // js-tabs-closing - вместе с js-tabs-bod закрыть вкладку при событии вне данной вкладки
 // js-tabs-click - открыть при клике (зона клика)
 // js-tabs-toggle - открыть или закрыть при клике (зона клика)
 // js-tabs-shell - оболочка скрывающая js-tabs-inner
 // js-tabs-inner - оболочка контента
+// 
 // 
 //  работает в связке с определением touchscreen  (isPC)
 
