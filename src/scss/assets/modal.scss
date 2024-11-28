@@ -1,0 +1,128 @@
+.modal {
+   --height-modal: calc(100vh - var(--header-h));
+   position: fixed;
+   top: var(--header-h);
+   left: 0;
+   z-index: 30;
+   width: 100vw;
+   height: var(--height-modal);
+   background-color: var(--color-modal-bg);
+   overflow-y: auto;
+
+   @supports(height: 100dvh) {
+      --height-modal: calc(100dvh - var(--header-h));
+   }
+
+   @media (min-width:768px) {
+      top: 0;
+      --height-modal: 100vh;
+
+      @supports(height: 100dvh) {
+         --height-modal: 100dvh
+      }
+   }
+
+   &__container {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      min-height: var(--height-modal);
+      display: flex;
+      align-items: center;
+
+      @media (max-width:767.98px) {
+         padding: 0;
+      }
+   }
+
+   &__content {
+      padding: 40px 40px 20px;
+   }
+
+
+
+   &__body {
+      position: relative;
+      margin: 0 auto;
+      width: 100%;
+      background-color: var(--color-white);
+
+      @media (max-width:767.98px) {
+         align-self: stretch;
+      }
+
+      @media (min-width:768px) {
+         max-width: 676px;
+      }
+   }
+
+   &__title {
+      margin-bottom: 20px;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 133%;
+      text-align: center;
+   }
+
+   &__block {
+      margin: 0 auto;
+      max-width: 444px;
+
+      textarea {
+         margin-bottom: 20px;
+         height: 70px;
+      }
+
+      input {
+         margin-bottom: 10px;
+      }
+   }
+
+   &__button {
+      width: 100%;
+      margin-bottom: 10px;
+   }
+
+   &__text {
+      font-size: 12px;
+      line-height: 150%;
+
+      a {
+         font-size: inherit;
+         text-decoration: underline;
+         color: var(--color-yellow-broom);
+      }
+   }
+
+   &__image {
+      img {
+         width: 100%;
+      }
+   }
+
+   &__close {
+      @media (min-width:768px) {
+         position: absolute;
+         top: 10px;
+         right: 10px;
+      }
+   }
+
+   &__close-shell {
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+
+      @media (min-width:768px) {
+         padding: 0;
+      }
+   }
+}
+
+.js-modal-hidden {
+   display: none;
+
+   &.js-modal-visible {
+      display: block;
+
+   }
+}

@@ -413,7 +413,6 @@ document.addEventListener('click', (event) => {
    if (event.target.closest('.js-modal-close')) { testModalStopClose(event) }
 })
 function openModal(event) {
-   console.log('open');
    let modalElement = event.target.closest('.js-modal-open').dataset.modal_open;
    if (typeof modalElement !== "undefined" && document.querySelector(`#${modalElement}`)) {
       document.querySelector(`#${modalElement}`).classList.add('js-modal-visible');
@@ -429,8 +428,6 @@ function testModalStopClose(event) {
    closeModal(event);
 }
 function closeModal(event) {
-   console.log('close');
-
    event.target.closest('.js-modal-hidden').classList.remove('js-modal-visible');
    if (!document.querySelector('.js-modal-visible')) {
       document.body.classList.remove('body-overflow');
