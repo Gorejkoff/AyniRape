@@ -37,7 +37,8 @@
 
    &__form-inputs {
       margin: 0 auto;
-      width: 444px;
+      width: 100%;
+      max-width: 444px;
 
       input {
          display: block;

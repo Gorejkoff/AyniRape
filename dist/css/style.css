@@ -655,10 +655,6 @@ body.open-basket {
   color: var(--color-yellow-broom);
 }
 
-.tab__shell li:first-child button {
-  padding-top: 0;
-}
-
 .tab ul {
   background-color: var(--color-white);
 }
@@ -3477,7 +3473,8 @@ body.open-basket {
 
 .enter__form-inputs {
   margin: 0 auto;
-  width: 444px;
+  width: 100%;
+  max-width: 444px;
 }
 
 .enter__form-inputs input {
@@ -3998,6 +3995,10 @@ body.open-basket {
     margin-bottom: 70px;
   }
 
+  .tab-adaptive-768 .tab__shell li:first-child button {
+    padding-top: 0;
+  }
+
   .tab-adaptive-768 .tab__shell.js-tabs-shell {
     height: auto;
   }
@@ -4448,6 +4449,10 @@ body.open-basket {
 
   .margin-section {
     margin-bottom: 100px;
+  }
+
+  .tab-adaptive-1024 .tab__shell li:first-child button {
+    padding-top: 0;
   }
 
   .tab-adaptive-1024 .tab__shell.js-tabs-shell {

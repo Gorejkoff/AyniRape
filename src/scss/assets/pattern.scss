@@ -461,9 +461,19 @@ body {
          }
       }
 
-      li:first-child {
+      .tab-adaptive-768 & li:first-child {
          button {
-            padding-top: 0;
+            @media (min-width:768px) {
+               padding-top: 0;
+            }
+         }
+      }
+
+      .tab-adaptive-1024 & li:first-child {
+         button {
+            @media (min-width:1024px) {
+               padding-top: 0;
+            }
          }
       }
 
