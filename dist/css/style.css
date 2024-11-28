@@ -1334,6 +1334,10 @@ body.open-basket {
   display: block;
 }
 
+.body-overflow {
+  overflow: hidden;
+}
+
 .main-screen {
   height: 100vh;
   display: -webkit-box;
