@@ -4872,6 +4872,12 @@ body.open-basket {
         align-self: center;
   }
 
+  .personal__order-tab-buttons button {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 30%;
+            flex: 1 0 30%;
+  }
+
   .personal__order-tab {
     border-bottom: 1px solid var(--color-blue-crayola);
   }
