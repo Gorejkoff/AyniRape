@@ -204,6 +204,10 @@
          margin: 0;
          margin-top: 30px;
       }
+
+      span {
+         display: inline-block;
+      }
    }
 
    &__order {
@@ -246,10 +250,6 @@
 
    &__order-tab {
       display: none;
-
-      @media (max-width:767.98px) {
-         border-bottom: 1px solid var(--color-blue-crayola);
-      }
 
       &.active {
          display: block;
@@ -306,6 +306,10 @@
 
    &__order-item {
       margin-bottom: 10px;
+
+      @media (max-width:767.98px) {
+         border-bottom: 1px solid var(--color-blue-crayola);
+      }
    }
 
    &__order-product {
@@ -503,7 +507,6 @@
 
       @media (min-width:600px) {
          grid-template-columns: 1fr 1fr;
-
       }
 
       @media (min-width:1024px) {
@@ -511,20 +514,9 @@
       }
    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+   & .card-product {
+      @media (max-width:767.98px) {
+         border-bottom: 1px solid var(--color-smoky-white);
+      }
+   }
 }

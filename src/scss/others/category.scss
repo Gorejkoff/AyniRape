@@ -35,6 +35,12 @@
       @media (min-width:1024px) {
          grid-template-columns: 1fr 1fr 1fr 1fr;
       }
+
+      & .card-product {
+         @media (max-width:767.98px) {
+            border-bottom: 1px solid var(--color-smoky-white);
+         }
+      }
    }
 
    &__pagination {

@@ -39,6 +39,7 @@
 
    &__text {
       font-size: 14px;
+      line-height: 125%;
 
       @media (min-width:768px) {
          font-size: 16px;
@@ -53,6 +54,14 @@
    &__button {
       display: flex;
       justify-content: flex-start;
+
+      @media (max-width:767.98px) {
+
+         a,
+         button {
+            width: 100%;
+         }
+      }
    }
 
    &__image {

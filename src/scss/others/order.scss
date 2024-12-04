@@ -118,12 +118,14 @@
          position: absolute;
          top: 0;
          left: 0;
+         font-size: 12px;
          color: var(--color-blue-crayola);
       }
    }
 
    &__info-product {
       position: relative;
+      font-weight: 700;
       padding-left: 1.5em;
       line-height: 136%;
    }
