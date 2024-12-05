@@ -5,14 +5,12 @@ if (document.querySelector('#personal')) {
    const buttonSave = document.getElementById('personal-save');
 
    document.body.addEventListener('click', (event) => {
-
       if (event.target.closest('#personal-edit')) {
          edit();
       }
       if (event.target.closest('#personal-save')) {
          save();
       }
-
    })
 
    function edit() {
@@ -29,6 +27,15 @@ if (document.querySelector('#personal')) {
       buttonEdit.style.display = "flex";
       buttonSave.style.display = "none";
    }
+}
 
-
+if (document.querySelector('.input-phone')) {
+   const inputs = document.querySelectorAll('.input-phone');
+   inputs.forEach((inputItem) => {
+      inputItem.addEventListener('input', (e) => {
+         const value = e.target.value;
+         if (value.length > 0)
+            e.target.value = '+' + value.replace(/[^0-9\s]/g, '');
+      });
+   })
 }
