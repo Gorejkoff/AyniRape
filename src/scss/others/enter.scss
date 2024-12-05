@@ -1,7 +1,11 @@
 .enter {
+   padding-bottom: 40px;
    display: flex;
    flex-direction: column;
 
+   @media (min-width:768px) {
+      padding-bottom: 160px;
+   }
 
    &__container {
       flex: 1 1 auto;
