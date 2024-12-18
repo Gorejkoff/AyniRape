@@ -36,6 +36,11 @@ const HEADER_SEARCH_IMPUT = document.getElementById('header-search-input');
 const HEADER_TOP = document.getElementById('header-top');
 const HEADER = document.getElementById('header');
 const allTabsBlock = document.querySelectorAll('.js-tabs-block');
+const presents = document.querySelector('.presents');
+const view = document.querySelector('.presents__view');
+const image = document.querySelector('.presents__image');
+
+
 
 function setVarHeight() {
    document.body.style.setProperty('--header-h', HEADER.offsetHeight + "px")
@@ -50,6 +55,8 @@ HEADER_SEARCH_FORM.addEventListener('blur', () => {
 }, { 'capture': true })
 
 
+const closeTabsBlockThrottle = throttle(closeTabsBlock, 100);
+const addSizePresentsThrottle = throttle(addSizePresentsBlock, 100);
 window.addEventListener('resize', () => {
    if (MIN1024.matches) {
       closeMobileMenu();
@@ -57,6 +64,7 @@ window.addEventListener('resize', () => {
    }
    varHeight();
    if (MIN768.matches && allTabsBlock.length > 0) closeTabsBlockThrottle();
+   if (presents) addSizePresentsThrottle()
 })
 
 
@@ -114,7 +122,6 @@ function closeBasket() {
 function closeTabsBlock() {
    allTabsBlock.forEach((e) => { tabs.closeTabs(e) })
 }
-const closeTabsBlockThrottle = throttle(closeTabsBlock, 100);
 
 
 // переход фокуса при вводе кода
@@ -137,6 +144,11 @@ if (INPUTS_CODE.length > 0) {
    }
 }
 
+function addSizePresentsBlock() {
+   presents.style.setProperty('--hView', `-${view.offsetHeight}px`);
+   presents.style.setProperty('--hImage', `${image.offsetHeight}px`);
+}
+if (presents) addSizePresentsBlock();
 
 // перемещение блоков при адаптиве
 // data-da=".class,3,768" 
