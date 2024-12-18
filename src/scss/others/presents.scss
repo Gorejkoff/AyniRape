@@ -13,7 +13,7 @@
    }
 
    &__slide {
-      --duration: 0.3s;
+      --duration: 0.4s;
       padding: 10px 20px 20px;
       display: flex;
       flex-direction: column;
@@ -26,6 +26,7 @@
 
       &:hover {
          background-color: var(--color-black);
+         transition: all var(--duration);
 
          .presents__view,
          .presents__text {
