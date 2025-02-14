@@ -2827,6 +2827,7 @@ body.open-basket {
   z-index: 21;
   overflow: hidden;
   height: calc(100vh - var(--header-h) - var(--header-top-h));
+  max-height: 100vh;
   width: 100%;
   overflow: hidden;
   pointer-events: none;
