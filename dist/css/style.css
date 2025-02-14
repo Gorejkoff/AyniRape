@@ -1366,6 +1366,7 @@ body.open-basket {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
+  height: 100%;
 }
 
 .main-screen__swiper-wrapper {
