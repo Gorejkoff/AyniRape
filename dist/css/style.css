@@ -1122,6 +1122,11 @@ body.open-basket {
   text-align: center;
 }
 
+.footer__logo img {
+  width: 70px;
+  height: 100px;
+}
+
 .footer__nav {
   margin-bottom: 40px;
 }
