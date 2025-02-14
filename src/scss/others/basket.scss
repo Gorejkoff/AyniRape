@@ -2,11 +2,11 @@
 
 .basket {
    position: fixed;
-   top: calc(var(--header-h) + var(--header-top-h));
+   top: calc(var(--header-h, 119px) + var(--header-top-h, 44px));
    right: 0;
    z-index: 21;
    overflow: hidden;
-   height: calc(100vh - var(--header-h) - var(--header-top-h));
+   height: calc(100vh - var(--header-h, 119px) - var(--header-top-h, 44px));
    max-height: 100vh;
    width: 100%;
    overflow: hidden;
