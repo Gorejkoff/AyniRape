@@ -2828,11 +2828,10 @@ body.open-basket {
 
 .basket {
   position: fixed;
-  top: calc(var(--header-h, 119px) + var(--header-top-h, 44px));
+  top: 0;
   right: 0;
   z-index: 21;
-  overflow: hidden;
-  height: calc(100vh - var(--header-h, 119px) - var(--header-top-h, 44px));
+  height: 100vh;
   max-height: 100vh;
   width: 100%;
   overflow: hidden;
@@ -2846,7 +2845,7 @@ body.open-basket {
 .basket__body {
   will-change: right;
   position: relative;
-  top: 0;
+  top: calc(var(--header-h, 119px) + var(--header-top-h, 44px));
   right: -100vw;
   padding: 12px;
   margin-left: auto;
@@ -2857,7 +2856,7 @@ body.open-basket {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 100%;
+  height: calc(100vh - var(--header-h, 119px) - var(--header-top-h, 44px));
   width: 100%;
   background-color: var(--color-white);
   pointer-events: all;
